@@ -43,8 +43,8 @@ def run_process_tasks():
 def train_model(X_train, y_train):
     rfc = RandomForestClassifier(class_weight='balanced')
     params = {'n_estimators' : [80, 90, 100, 110],
-            'max_depth'    : [2, 3, 4, 5]
-            }
+              'max_depth' : [2, 3, 4, 5]
+             }
     clf = RandomizedSearchCV(rfc, params, scoring='balanced_accuracy')
 
     print('Training model with cross validation...')

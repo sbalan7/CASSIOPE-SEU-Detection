@@ -6,6 +6,7 @@ import pandas as pd
 import pickle
 import time
 
+
 def read_data():
     path = 'cleaned_data.csv'
     data = pd.read_csv(path)
@@ -57,4 +58,4 @@ def train_model(X_train, y_train):
     print('Best params were {}'.format(search.best_params_))
 
     print('Saving model')
-    pickle.dump(clf, open("model.pkl", 'wb'))
+    pickle.dump(model, open("model.pkl", 'wb'))

@@ -40,7 +40,6 @@ def run_process_tasks():
     pickle.dump(Scaler, open(os.path.join('Model', 'scaler.pkl'), 'wb'))
     return X_train, X_test, y_train, y_test
 
-
 def train_model(X_train, y_train):
     rfc = RandomForestClassifier(class_weight='balanced')
     params = {'n_estimators' : [80, 90, 100, 110],

@@ -4,6 +4,7 @@ import pandas as pd
 import time
 import os
 
+
 def clean_cassiope():
     data = pd.read_csv(os.path.join('Data','cassiope.txt'))
 

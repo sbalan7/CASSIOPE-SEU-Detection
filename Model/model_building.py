@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 import pickle
 import time
+import os
 
 
 def read_data():
@@ -24,8 +25,8 @@ def process(data, mms=None, fit=False):
 
 def run_process_tasks():    
     df = read_data()
-    X = df.drop(['SEU'], axis=1)
-    y = df['SEU']
+    X = df.drop(['seu'], axis=1)
+    y = df['seu']
 
     print('Preprocessing data...')
     tic = time.time()
@@ -36,7 +37,7 @@ def run_process_tasks():
     print('Task done in {:.3f} second(s)'.format(toc-tic))
 
     print("Saving scaler")
-    pickle.dump(Scaler, open("scaler.pkl", 'wb'))
+    pickle.dump(Scaler, open(os.path.join('Model', 'scaler.pkl'), 'wb'))
     return X_train, X_test, y_train, y_test
 
 
@@ -58,4 +59,7 @@ def train_model(X_train, y_train):
     print('Best params were {}'.format(search.best_params_))
 
     print('Saving model')
-    pickle.dump(model, open("model.pkl", 'wb'))
+    pickle.dump(model, open(os.path.join('Model', 'model.pkl'), 'wb'))
+
+X_train, X_test, y_train, y_test = run_process_tasks()
+train_model(X_train, y_train)

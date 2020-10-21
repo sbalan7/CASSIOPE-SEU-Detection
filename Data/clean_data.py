@@ -20,7 +20,7 @@ def clean_cassiope():
 
     data[['Date', 'Time']] = data['#Time'].str.split(' ', n=1, expand=True)
     data = data.reset_index(drop=True)
-    data = data.drop(['#Time'], axis=1)
+    data = data.drop(['#Time', 'Time'], axis=1)
     data.loc[:,'Date'] = pd.to_datetime(data['Date'], format='%d/%m/%Y', errors='coerce')
     
     return data
